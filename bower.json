@@ -1,12 +1,12 @@
 {
-  "name": "grunt-fun",
+  "name": "webproj3",
   "description": "",
   "main": "",
   "authors": [
     "Audun Meek Olsen <audunmeekolsen@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/audunolsen/Git-training",
+  "homepage": "https://github.com/audunolsen/webproj3",
   "ignore": [
     "**/.*",
     "node_modules",
