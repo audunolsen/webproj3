@@ -1,0 +1,84 @@
+html
+	font-size: 62.5%
+
+// Primary text
+body
+	+openSans($light, normal)
+	font-size: 16 / $rembase + rem
+	line-height: $lineHeightBase / $fontbase
+
+// Title
+h1
+	font-size: 42 / $rembase + rem
+
+// Headline
+h2
+	font-size: 25 / $rembase + rem
+
+// Sub headline
+h3
+	font-size: 23 / $rembase + rem
+
+// Additional styles
+
+.secondary-text
+	font-size: 13 / $rembase + rem
+
+.center-text
+	text-align: center
+
+.left-text
+	text-align: left
+
+.right-text
+	text-align: right
+
+a.inherit
+	color: inherit
+	text-decoration: none
+
+a.inherit-u
+	color: inherit
+	text-decoration: underline
+
+// Font style overrides
+
+.italic
+	+openSans(inherit, italic)
+
+.light
+	+openSans($light, normal)
+
+.light-italic
+	+openSans($light, italic)
+
+.regular
+	+openSans($regular, normal)
+
+.regular-italic
+	+openSans($regular, italic)
+
+.semibold
+	+openSans($semiBold, normal)
+
+.semibold-italic
+	+openSans($semiBold, italic)
+
+.bold
+	+openSans($bold, normal)
+
+.bold-italic
+	+openSans($bold, italic)
+
+.extrabold
+	+openSans($extraBold, normal)
+
+.extrabold-italic
+	+openSans($extraBold, italic)
+
+strong
+	+openSans($bold, normal)
+
+.fancy
+	letter-spacing: 1rem
+	font-variant: small-caps

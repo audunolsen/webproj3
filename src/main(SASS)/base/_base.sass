@@ -1,0 +1,192 @@
+*
+	box-sizing: border-box
+	outline: none
+
+html, body
+	height: 100%
+	color: $color-dark
+
+main, .inner
+	max-width: 960px
+	width: calc(100% - (4.8rem * 2) )
+	margin: 0 auto
+
+hr
+	background-color: $color-dark
+	height: 2px
+	border: none
+
+.full-height
+   height: 100%
+
+// Font style overrides
+
+.italic
+	+openSans(inherit, italic)
+
+.light
+	+openSans($light, normal)
+
+.light-italic
+	+openSans($light, italic)
+
+.regular
+	+openSans($regular, normal)
+
+.regular-italic
+	+openSans($regular, italic)
+
+.semibold
+	+openSans($semiBold, normal)
+
+.semibold-italic
+	+openSans($semiBold, italic)
+
+.bold
+	+openSans($bold, normal)
+
+.bold-italic
+	+openSans($bold, italic)
+
+.extrabold
+	+openSans($extraBold, normal)
+
+.extrabold-italic
+	+openSans($extraBold, italic)
+
+strong
+	+openSans($bold, normal)
+
+.fancy
+	letter-spacing: 1rem
+	font-variant: small-caps
+
+// Margin overrides
+
+.margin-large
+	+margin(all, large)
+
+.margin-large-vertical
+	+margin(vertical, large)
+
+.margin-large-horizontal
+	+margin(horizontal, large)
+
+.margin-large-top
+	+margin(top, large)
+
+.margin-large-bottom
+	+margin(bottom, large)
+
+.margin-large-left
+	+margin(left, large)
+
+.margin-large-right
+	+margin(right, large)
+
+.margin-medium
+	+margin(all, medium)
+
+.margin-medium-vertical
+	+margin(vertical, medium)
+
+.margin-medium-horizontal
+	+margin(horizontal, medium)
+
+.margin-medium-top
+	+margin(top, medium)
+
+.margin-medium-bottom
+	+margin(bottom, medium)
+
+.margin-medium-left
+	+margin(left, medium)
+
+.margin-medium-right
+	+margin(right, medium)
+
+.margin-small
+	+margin(all, small)
+
+.margin-small-vertical
+	+margin(vertical, small)
+
+.margin-small-horizontal
+	+margin(horizontal, small)
+
+.margin-small-top
+	+margin(top, small)
+
+.margin-small-bottom
+	+margin(bottom, small)
+
+.margin-small-left
+	+margin(left, small)
+
+.margin-small-right
+	+margin(right, small)
+
+// Padding overrides
+
+.padding-large
+	+padding(all, large)
+
+.padding-large-vertical
+	+padding(vertical, large)
+
+.padding-large-horizontal
+	+padding(horizontal, large)
+
+.padding-large-top
+	+padding(top, large)
+
+.padding-large-bottom
+	+padding(bottom, large)
+
+.padding-large-left
+	+padding(left, large)
+
+.padding-large-right
+	+padding(right, large)
+
+.padding-medium
+	+padding(all, medium)
+
+.padding-medium-vertical
+	+padding(vertical, medium)
+
+.padding-medium-horizontal
+	+padding(horizontal, medium)
+
+.padding-medium-top
+	+padding(top, medium)
+
+.padding-medium-bottom
+	+padding(bottom, medium)
+
+.padding-medium-left
+	+padding(left, medium)
+
+.padding-medium-right
+	+padding(right, medium)
+
+.padding-small
+	+padding(all, small)
+
+.padding-small-vertical
+	+padding(vertical, small)
+
+.padding-small-horizontal
+	+padding(horizontal, small)
+
+.padding-small-top
+	+padding(top, small)
+
+.padding-small-bottom
+	+padding(bottom, small)
+
+.padding-small-left
+	+padding(left, small)
+
+.padding-small-right
+	+padding(right, small)

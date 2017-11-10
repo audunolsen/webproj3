@@ -1,0 +1,69 @@
+# [$ grunt] Rebuild dist/ directiry 
+default:
+ # Delete dist/ and grunt-cache/
+ - 'clean:rebuild'
+ # Scripts
+ # ↓ Uglify Must be prefixed with newer to supress nonsenical warnings
+ - 'newer:uglify:dynamic_uglify'
+ - 'regex-replace:sourcemap_dynamic_uglify'
+ - 'dynamic_coffee'
+ - 'dynamic_concat'
+ # Markup
+ - 'pug:dist'
+ - 'htmlmin:temp'
+ - 'htmlmin:dist'
+ # Styles
+ - 'dynamic_sass_dir'
+ - 'dynamic_sass'
+ - 'dynamic_css'
+ # Misc maintenance
+ - 'imagemin'
+ - 'shell:bower_install'
+ - 'wiredep'
+ - 'sync'
+ - 'dist_built'
+ 
+update_if_newer:
+ # Scripts
+ - 'newer:uglify:dynamic_uglify'
+ - 'newer:regex-replace:sourcemap_dynamic_uglify'
+ - 'dynamic_coffee'
+ - 'dynamic_concat'
+ # Markup
+ - 'newer:pug:dist'
+ - 'newer:htmlmin:temp'
+ - 'newer:htmlmin:dist'
+ # Styles
+ - 'dynamic_sass_dir'
+ - 'dynamic_sass'
+ - 'dynamic_css'
+ # Misc maintenance
+ - 'newer:imagemin'
+ - 'newer:shell:bower_install'
+ - 'wiredep'
+ - 'sync'
+
+# Watch files and fire different tasks depending on file type & Start localhost of dist/
+# In addition to watch, it will rebuild dist if doesn't exist or update if outdated
+env:
+ - 'concurrent:ready'
+ - 'concurrent:watch'
+
+# Tasks for .js files in src/ that only needs uglification
+dynamic_uglify:
+ - 'newer:uglify:dynamic_uglify' # Uglify from src/ and distribute parallelly to dist/
+ - 'newer:regex-replace:sourcemap_dynamic_uglify' # Append pwd to source file path
+ 
+# Compile pug then minify the html them clean uneccesary files
+markup:
+ - 'newer:pug:dist'
+ - 'newer:htmlmin:temp'
+ - 'newer:htmlmin:dist'
+
+# Watch task only, used mostly for grunt debugging purposes because of 
+# faster startup than env and log isn't muted as with env
+w:
+ - 'chokidar'
+
+# TODO LIST
+# 1. PRUNE/REMOVE DEBUG INFO TASK

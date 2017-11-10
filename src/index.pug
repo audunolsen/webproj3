@@ -1,0 +1,19 @@
+include includes/head.pug
+	
+body#pls
+	
+	include includes/header.pug
+	
+	main
+		
+		h1 SOLR
+		
+		p Search
+		input#search-field(type='text')
+		br
+		span.error.hide sup
+		p: input#search-btn(type="submit" value="Submit")
+	
+	include includes/footer.pug
+	
+	include includes/scripts.pug

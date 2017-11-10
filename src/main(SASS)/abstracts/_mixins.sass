@@ -1,0 +1,92 @@
+// HOW TO USE MIXIN:
+// Valid $weight arguments: $light, $regular, $semiBold, $bold, $extraBold
+// Valid $style arguments: normal, italic
+//
+// Usage example: +openSans($light, normal)
+
+=openSans($weight, $style)
+   font-family: 'open-sans'
+   font-weight: $weight
+   font-style: $style
+
+// HOW TO USE MIXIN:
+// Valid $directions arguments: left, right, top, bottom, vertical, horizontal
+// Valid $val arguments: large, medium, small
+//
+// Usage example: +margin(left right, large)
+
+=margin($directions, $val)
+
+   @if $val == large
+      @if $directions == vertical
+         margin: 48 / $rembase + rem 0
+      @else if $directions == horizontal
+         margin: 0 48 / $rembase + rem
+      @else if $directions == all
+         margin: 48 / $rembase + rem
+      @else
+         @each $var in $directions
+            margin-#{$var}: 48 / $rembase + rem
+
+   @else if $val == medium
+      @if $directions == vertical
+         margin: 24 / $rembase + rem 0
+      @else if $directions == horizontal
+         margin: 0 24 / $rembase + rem
+      @else if $directions == all
+         margin: 24 / $rembase + rem
+      @else
+         @each $var in $directions
+            margin-#{$var}: 24 / $rembase + rem
+
+   @else if $val == small
+      @if $directions == vertical
+         margin: 12 / $rembase + rem 0
+      @else if $directions == horizontal
+         margin: 0 12 / $rembase + rem
+      @else if $directions == all
+         margin: 12 / $rembase + rem
+      @else
+         @each $var in $directions
+            margin-#{$var}: 12 / $rembase + rem
+
+// HOW TO USE MIXIN:
+// Valid $directions arguments: left, right, top, bottom, vertical, horizontal
+// Valid $val arguments: large, medium, small
+//
+// Usage example: +padding(left right, large)
+
+=padding($directions, $val)
+
+   @if $val == large
+      @if $directions == vertical
+         padding: 48 / $rembase + rem 0
+      @else if $directions == horizontal
+         padding: 0 48 / $rembase + rem
+      @else if $directions == all
+         padding: 48 / $rembase + rem
+      @else
+         @each $var in $directions
+            padding-#{$var}: 48 / $rembase + rem
+
+   @else if $val == medium
+      @if $directions == vertical
+         padding: 24 / $rembase + rem 0
+      @else if $directions == horizontal
+         padding: 0 24 / $rembase + rem
+      @else if $directions == all
+         padding: 24 / $rembase + rem
+      @else
+         @each $var in $directions
+            padding-#{$var}: 24 / $rembase + rem
+
+   @else if $val == small
+      @if $directions == vertical
+         padding: 12 / $rembase + rem 0
+      @else if $directions == horizontal
+         padding: 0 12 / $rembase + rem
+      @else if $directions == all
+         padding: 12 / $rembase + rem
+      @else
+         @each $var in $directions
+            padding-#{$var}: 12 / $rembase + rem

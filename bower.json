@@ -1,0 +1,21 @@
+{
+  "name": "grunt-fun",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Audun Meek Olsen <audunmeekolsen@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/audunolsen/Git-training",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "dist/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-3.1.1.min": "https://code.jquery.com/jquery-3.1.1.min.js"
+  }
+}

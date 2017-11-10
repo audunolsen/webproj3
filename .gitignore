@@ -1,0 +1,17 @@
+/*
+/*/
+!/src/
+!/.gitignore
+!/.gitattributes
+!/grunt
+!/.bowerrc
+!/bower.json
+!/.gitmodules
+!/Submodule-test
+!/gruntfile.coffee
+!/package.json
+!/README.md
+!/custom_tasks
+.DS_Store
+grunt-cache
+grunt/error.html
