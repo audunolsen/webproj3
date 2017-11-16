@@ -4,15 +4,32 @@ body#pls
 	
 	include includes/header.pug
 	
-	main
-		
-		h1 SOLR
-		
-		p Search
-		input#search-field(type='text')
-		br
-		span.error.hide sup
-		p: input#search-btn(type="submit" value="Submit")
+	.main
+	
+		.hero-image
+			.logo
+			.hero-text
+				input#search-field(type='text', name='search', placeholder='Search..')
+				
+			.arrow
+				i.fa.fa-angle-down(aria-hidden='true')
+
+		.container.margin
+			.row
+				.col.col--8-of-12.col--centered
+					.text-box.margin
+						p.meta.uppercase category: health
+						h2 Regulatory forum
+						hr(id='line')
+						p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
+						p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
+					.text-box.margin
+						p.meta.uppercase category: health
+						h2 Regulatory forum
+						hr(id='line')
+						p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
+						p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
+
 	
 	include includes/footer.pug
 	
