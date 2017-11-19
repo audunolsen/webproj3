@@ -11,7 +11,7 @@
 !/gruntfile.coffee
 !/package.json
 !/README.md
-!/custom_tasks
+!/solrconf
 .DS_Store
 grunt-cache
 grunt/error.html
