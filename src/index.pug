@@ -7,7 +7,7 @@ body#pls
 	.main
 	
 		.hero-image
-			.logo
+			.logo: img(src='img/ptil-logo-eng.svg')
 			.hero-text
 				input#search-field(type='text', name='search', placeholder='Search..')
 				
@@ -18,17 +18,23 @@ body#pls
 			.row
 				.col.col--8-of-12.col--centered
 					.text-box.margin
-						p.meta.uppercase category: health
-						h2 Regulatory forum
-						hr(id='line')
-						p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
-						p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
+						.box-nonhover
+							p.category.uppercase category: health
+							h2 Regulatory forum
+							hr(id='line')
+							p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
+							p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
+						.box-hover
+							a(class='pdf-link' href='#' target='_blank').box-text.italic View PDF in a new window
 					.text-box.margin
-						p.meta.uppercase category: health
-						h2 Regulatory forum
-						hr(id='line')
-						p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
-						p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
+						.box-nonhover
+							p.category.uppercase category: health
+							h2 Regulatory forum
+							hr(id='line')
+							p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
+							p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
+						.box-hover
+							a(class='pdf-link' href='#' target='_blank').box-text.italic View PDF in a new window
 	
 	include includes/footer.pug
 	
