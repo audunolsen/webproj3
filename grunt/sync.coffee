@@ -5,9 +5,11 @@ module.exports =
 			cwd: 'src/'
 			src: [
 				'**'
+				'**/.*'
 				'!**/*CONCAT*/**'
 				'!**/*SASS*/**'
 				'!includes/**'
+				'!includes'
 				'!**/*.{pug,html,coffee,js,css,sass,scss}'
 			]
 			dest: 'dist/'

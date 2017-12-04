@@ -64,6 +64,9 @@ markup:
 # faster startup than env and log isn't muted as with env
 w:
  - 'chokidar'
+ 
+deploy:
+ - 'surge' 
 
 # TODO LIST
 # 1. PRUNE/REMOVE DEBUG INFO TASK

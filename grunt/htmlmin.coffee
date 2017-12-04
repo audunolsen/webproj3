@@ -17,6 +17,6 @@ module.exports =
 		files: [ {
 			expand: true
 			cwd: 'src/'
-			src: [ '**/*.html', '!includes/**' ]
+			src: [ '**/*.html', '!includes/**', '!includes/', '!includes' ]
 			dest: 'dist/'
 		} ]

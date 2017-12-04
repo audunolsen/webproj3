@@ -1,5 +1,5 @@
-# module.exports =
-# 
-#    surge: 'Your Project Name': options:
-#       project: 'dist/'
-#       domain: 'audunolsen.surge.sh'
+module.exports =
+
+   surge: 'webproj3': options:
+      project: 'dist/'
+      domain: 'webproj3.surge.sh'
