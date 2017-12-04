@@ -2,56 +2,89 @@ $ ->
 	
 	searchField = $('#search-field')
 	
-	toggleError = (elm, visibility, errorMsg) ->
-		elm.after('<span class="error hide"></span>')
-		errorElm = $('span.error')
-		if visibility is 'show'
-			errorElm.addClass('show').removeClass('hide')
-			elm.addClass('error-field')
-		if visibility is 'hide' 
-			errorElm.addClass('hide').removeClass('show')
-			elm.removeClass('error-field')
-		errorElm.text errorMsg
-	
-	
 	# Return filename without path (string)
-	basename   = (path)   -> return path.substr path.lastIndexOf('/')+1
+	# basename   = (path)   -> return path.substr path.lastIndexOf('/')+1
 	# Strip quotes from arg (if any)
-	stripQuote = (string) -> return string.replace(/^"(.*)"$/, '$1')
+	# stripQuote = (string) -> return string.replace(/^"(.*)"$/, '$1')
 	
-	# Callback when ajax request is made
-	result = (obj, search) ->
+	parseDate = (date) -> 
+		if date is undefined then date = '2000-01-01' # TEMPORARY: Assign dummydate
+		return date.toString().substring 0, 10
+	
+	result = (obj) ->
 		
-		# Word searched for
+		$('.filter').addClass('hide').removeClass('show')
+		$('.result-cards').empty()
+		$('.filter-inner').empty()
+		
+		console.log 'showing results'
+		
 		query = obj.responseHeader.params.q
+		found = obj.response.numFound
 		
-		# Quit function early if no files are found
-		if obj.response.numFound is 0
-			alert 'No matches found for "' + query + '"'
-			return
+		showErr = if found isnt 0 or query is '' then false else true
+		$('.no-results').text if showErr then 'No results for "' + query + '"' else ''
+		$('.results').text if found > 0 then 'Found '+ found + ' results for "' + query + '"' else ''
+		if not query or not found then return
 		
-		# File found
-		file  = stripQuote JSON.stringify(obj.response.docs[0].id)
+		years = []
+		categories = []
+		for data in obj.response.docs
+			categories.push data.keywords.toString()
+			years.push parseInt parseDate(data.creation_date)
+			
+		if years.length > 1 or categories.length > 1 then populateFilter(years, categories)
 		
-		# Display results
-		alert  'You searcehd for: ' + query + '\n\
-				 Files found: ' 		 + basename(file)
+		if $('.filter').hasClass('hide')
+			
+			$('html, body').animate
+				scrollTop: $('#cards').offset().top
+			, 300
+		
+		else 
+			
+			$('html, body').animate
+				scrollTop: $('.filter-link').offset().top-10
+			, 300
+		
+		# cardTemplate = $('.template-card').
+		i = 1
+		for doc in obj.response.docs
+			
+			cardTemplate = $('.card-template:first').clone().addClass i.toString()
+			
+			$('.result-cards').append(cardTemplate)
+			
+			$('.card-template.'+i+' p.category').text "category: " + doc.keywords
+			$('.card-template.'+i+' h2.title').text doc.pdf_docinfo_title
+			$('.card-template.'+i+' p.author').text "Written by " + doc.author + " – " + parseDate(doc.creation_date)
+			$('.card-template.'+i+' p.summary').text doc.subject
+			$('.card-template.'+i+' .hidden-data .year-hidden').text parseInt parseDate(doc.creation_date)
+			$('.card-template.'+i+' .hidden-data .category-hidden').text doc.keywords
+			
+			i++
+		
+		setTimeout ->
+			i = 0
+			interval = setInterval ->
+				cards = $('.result-cards .card-template')
+				card = cards[i]
+				$(card).addClass 'show'
+				i++
+				if i is cards.length then clearInterval interval
+			, 100
+		, 500
 
-	$('#search-btn').on 'click', ->
+	$('#search-btn').click (e) ->
+		
+		e.preventDefault()
 		
 		search = searchField.val()
 		
-		# Show error if search is empty and quit function
-		if search is ''
-			toggleError searchField, 'show', 'Field is empty'
-			return
-		# Remove error field class iff it exists
-		# else 
-		# 	searchField.removeClass('error-field')
-		# 	toggleError('hide')
-		
 		$.ajax
-			url: 'http://localhost:8983/solr/gettingstarted/select?indent=on&q=' + search + '&wt=json'
+			# url: 'http://user:cnzyCXC2XAdV@35.188.28.4/solr/ptil/select?q=' + search
+			url: 'http://35.188.28.4/solr/ptil/select?q=' + search
+			type: 'GET'
 			success: (data) -> result(data)
 			dataType: 'jsonp'
 			jsonp: 'json.wrf'
