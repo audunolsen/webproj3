@@ -2,7 +2,7 @@ populateFilter = (years, categories) ->
 	
 	rmDuplicates = (arr) -> arr.filter (item, index, self) -> return index == self.indexOf(item)
 	
-	years = rmDuplicates years
+	years = rmDuplicates years.sort()
 	categories = rmDuplicates categories
 	
 	if years.length > 1
@@ -10,7 +10,6 @@ populateFilter = (years, categories) ->
 		$('.filter-inner').append('<div class="years"><p class="filter-title">year</p)></div>')
 		
 		for year in years
-			# $('<div class="tag unchecked">' + year + '</div>').appendTo('.years')
 			$('<div class="tag unchecked" title="' + year + '">' + year + '</div>').appendTo('.years')
 	
 	if categories.length > 1

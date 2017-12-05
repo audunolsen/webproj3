@@ -44,7 +44,7 @@ $ ->
 		else 
 			
 			$('html, body').animate
-				scrollTop: $('.filter-link').offset().top-10
+				scrollTop: $('.filter-link').offset().top-15
 			, 300
 		
 		# cardTemplate = $('.template-card').
@@ -59,6 +59,7 @@ $ ->
 			$('.card-template.'+i+' h2.title').text doc.pdf_docinfo_title
 			$('.card-template.'+i+' p.author').text "Written by " + doc.author + " – " + parseDate(doc.creation_date)
 			$('.card-template.'+i+' p.summary').text doc.subject
+			$('.card-template.'+i+' .pdf-link').attr 'href', 'docs/' + doc.stream_name
 			$('.card-template.'+i+' .hidden-data .year-hidden').text parseInt parseDate(doc.creation_date)
 			$('.card-template.'+i+' .hidden-data .category-hidden').text doc.keywords
 			
@@ -84,6 +85,10 @@ $ ->
 		$.ajax
 			# url: 'http://user:cnzyCXC2XAdV@35.188.28.4/solr/ptil/select?q=' + search
 			url: 'http://35.188.28.4/solr/ptil/select?q=' + search
+			cache: false
+			# xhrFields: withCredentials: true
+			# beforeSend: (xhr) ->
+			# 	xhr.setRequestHeader 'Authorization', 'Basic ' + btoa('user:cnzyCXC2XAdV')
 			type: 'GET'
 			success: (data) -> result(data)
 			dataType: 'jsonp'
