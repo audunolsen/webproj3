@@ -1,40 +1,51 @@
 include includes/head.pug
 	
-body#pls
+body
 	
-	include includes/header.pug
+	.hero-img
+		.logo-wrap: .logo: img(src='img/ptil-logo-eng.svg')
+		.search-wrap: form.search-pill
+			input#search-field(type='text', name='search', placeholder='Search..')
+			button#search-btn
+				.nonhover: include includes/svg/icon-search
+				.hover:    include includes/svg/icon-search
+		.misc-wrap
+			p: .no-results.hide
 	
-	.main
 	
-		.hero-image
-			.logo: img(src='img/ptil-logo-eng.svg')
-			.hero-text
-				input#search-field(type='text', name='search', placeholder='Search..')
-				
-			.arrow
-				i.fa.fa-angle-down(aria-hidden='true')
-
-		.container.margin
-			.row
-				.col.col--8-of-12.col--centered
-					.text-box.margin
-						.box-nonhover
-							p.category.uppercase category: health
-							h2 Regulatory forum
-							hr(id='line')
-							p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
-							p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
-						.box-hover
-							a(class='pdf-link' href='#' target='_blank').box-text.italic View PDF in a new window
-					.text-box.margin
-						.box-nonhover
-							p.category.uppercase category: health
-							h2 Regulatory forum
-							hr(id='line')
-							p.meta.italic Written by James McGregor at 12:57 - 21.05.2017
-							p The regulatory forum brings together companies, unions and government in a "tripartite" collaboration on health, safety and the environment (HSE) in the petroleum sector with companies, unions and government...
-						.box-hover
-							a(class='pdf-link' href='#' target='_blank').box-text.italic View PDF in a new window
+	.filter.hide
+		.filter-inner
+		.filter-link
+			span: .arrow-up
+			p filter results
+	
+		
+	p#cards: .results.hide
+	
+	.filter-feedback.hide
+			p
+			.arrow-line
+				.line
+				.arrow
+				.line
+	
+	.row: .col.col--8-of-12.col--centered
+			
+		.jq-clone(style='display: none')
+			.text-box.margin.card-template
+				.box-nonhover
+					p.category.uppercase
+					h2.title
+					hr.line
+					p.author.italic
+					p.summary
+				.box-hover
+					a.pdf-link(href='#' target='_blank').box-text.italic View PDF in a new window
+				.hidden-data(style='display: none')
+					.category-hidden
+					.year-hidden
+					
+		.result-cards
 	
 	include includes/footer.pug
 	
